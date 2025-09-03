@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Brand</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas+Neue&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
+    <style>
+
+        /* Animasi underline aktif */
+.navbar-nav .nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #ffc107;
+  transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link.active {
+  color: #ffc107 !important;
+}
+
+.navbar-nav .nav-link.active::after {
+  width: 100%;
+}
+
+/* Efek highlight smooth */
+.navbar-nav .nav-link {
+  transition: color 0.4s ease, transform 0.3s ease;
+}
+.navbar-nav .nav-link.active {
+  transform: scale(1.05);
+}
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar animation */
+        #mainNav {
+            transition: background 0.4s cubic-bezier(.4, 0, .2, 1), box-shadow 0.4s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        #mainNav.scrolled {
+            background: rgba(34, 34, 34, 0.95) !important;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+        }
+
+        .navbar-nav .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #ffc107;
+            transition: width 0.3s;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: #ffc107 !important;
+        }
+
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Logo kecil di pojok kiri atas setiap section utama */
+        .section-logo,
+        .section-relative > .section-logo,
+        .section-relative > div > .section-logo {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            z-index: 10;
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            opacity: 0.95;
+        }
+        @media (max-width: 575px) {
+            .section-logo,
+            .section-relative > .section-logo,
+            .section-relative > div > .section-logo {
+                width: 32px;
+                height: 32px;
+                top: 8px;
+                left: 8px;
+            }
+        }
+        .section-relative {
+            position: relative;
+        }
+
+        /* Responsive section padding & text */
+        section,
+        .section-relative {
+            padding-left: 10px !important;
+            padding-right: 10px !important;
+        }
+        section h2, section h3, section h4 {
+            word-break: break-word;
+        }
+        section p, section ul, section li {
+            word-break: break-word;
+        }
+
+        /* Responsive grid & text */
+        @media (max-width: 991px) {
+            .container, .container-fluid {
+                padding-left: 10px !important;
+                padding-right: 10px !important;
+            }
+            .row {
+                flex-direction: column !important;
+            }
+            .col-md-4, .col-md-6, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-9, .col-lg-12 {
+                width: 100% !important;
+                max-width: 100% !important;
+                text-align: center !important;
+                margin-bottom: 20px;
+            }
+            .mb-5 {
+                margin-bottom: 2rem !important;
+            }
+            .section-relative > div[style*="position: absolute"] {
+                position: static !important;
+                left: 0 !important;
+                bottom: 0 !important;
+                max-width: 100% !important;
+                padding: 10px 0 !important;
+            }
+            .section-relative > .text-white[style*="position: absolute"] {
+                position: static !important;
+                left: 0 !important;
+                bottom: 0 !important;
+                max-width: 100% !important;
+                padding: 10px 0 !important;
+                gap: 10px !important;
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
+            .section-relative > .text-white[style*="position: absolute"] h4,
+            .section-relative > .text-white[style*="position: absolute"] p {
+                white-space: normal !important;
+                text-align: left !important;
+            }
+            /* Sponsor section in about */
+            #about > div[style*="display: flex"] {
+                flex-direction: column !important;
+                align-items: center !important;
+                position: static !important;
+                padding: 20px 0 !important;
+                gap: 10px !important;
+            }
+            #about > div[style*="display: flex"] > div {
+                text-align: center !important;
+            }
+            /* Goals icons */
+            #team > div[style*="display: flex"] {
+                flex-direction: column !important;
+                gap: 30px !important;
+            }
+            /* Lingkaran bullet */
+            #team > div[style*="position: absolute; bottom: 60px; left: 60px;"] {
+                position: static !important;
+                left: 0 !important;
+                bottom: 0 !important;
+                max-width: 100% !important;
+                padding: 10px 0 !important;
+            }
+            /* Lingkaran text */
+            #team > div[style*="position: absolute; top: 29%"], 
+            #team > div[style*="position: absolute; top: 57%"], 
+            #team > div[style*="position: absolute; bottom: 18%"], 
+            #team > div[style*="position: absolute; top: 56%"], 
+            #team > div[style*="position: absolute; top: 29%"] {
+                position: static !important;
+                left: 0 !important;
+                right: 0 !important;
+                top: 0 !important;
+                bottom: 0 !important;
+                transform: none !important;
+                margin-bottom: 10px !important;
+                max-width: 100% !important;
+            }
+        }
+        @media (max-width: 767px) {
+            section h2, section h3, section h4 {
+                font-size: 1.3rem !important;
+            }
+            section p, section ul, section li {
+                font-size: 1rem !important;
+            }
+            .fw-bold {
+                font-size: 1.2rem !important;
+            }
+            .intro-lead-in {
+                font-size: 1.1rem !important;
+            }
+        }
+        @media (max-width: 575px) {
+            .navbar-brand {
+                font-size: 18px !important;
+            }
+            .intro-lead-in {
+                font-size: 1rem !important;
+            }
+            section h2, section h3, section h4 {
+                font-size: 1.1rem !important;
+            }
+            section p, section ul, section li {
+                font-size: 0.95rem !important;
+            }
+            .fw-bold {
+                font-size: 1rem !important;
+            }
+            .section-relative {
+                padding-left: 2px !important;
+                padding-right: 2px !important;
+            }
+        }
+        /* Responsive form */
+        #applicationForm .form-control {
+            font-size: 1rem !important;
+        }
+        @media (max-width: 575px) {
+            #applicationForm .form-control {
+                font-size: 0.95rem !important;
+            }
+        }
+        /* Responsive footer */
+        footer .row {
+            flex-direction: column !important;
+            text-align: center !important;
+        }
+        footer .col-md-5 {
+            width: 100% !important;
+            margin-bottom: 10px;
+        }
+        /* Responsive images for all sections */
+img,
+img.img-fluid,
+img.section-logo,
+section img,
+.row img,
+.col-md-4 img,
+.col-md-6 img,
+.col-lg-3 img,
+.col-lg-4 img,
+.col-lg-5 img,
+.col-lg-9 img,
+.col-lg-12 img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* Responsive logo di pojok kiri atas */
+.section-logo,
+.section-relative > .section-logo,
+.section-relative > div > .section-logo {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    opacity: 0.95;
+}
+@media (max-width: 575px) {
+    .section-logo,
+    .section-relative > .section-logo,
+    .section-relative > div > .section-logo {
+        width: 32px;
+        height: 32px;
+        top: 8px;
+        left: 8px;
+    }
+}
+
+/* Responsive sponsor images and icons */
+#about img,
+#team img,
+section img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Responsive modal images */
+.modal-body img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+    </style>
+</head>
+
+<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="54">
+    <nav class="navbar navbar-expand-lg fixed-top bg-dark navbar-dark" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#page-top" style="color: rgb(255,255,255); font-family: 'Bebas Neue', cursive;">Top Seeds<br>Initiative</a>
+            <button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto text-uppercase">
+                    <li class="nav-item"><a class="nav-link" href="#services">home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Training</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">sponsor</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#team">Building</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="masthead" style="background-image: url('assets/img/team/Copy%20of%20Top%20Seeds%20Web.jpg');">
+       <!-- Logo kiri atas -->
+  <div style="position: absolute; top: 20px; left: 20px;">
+    <img src="assets/img/portfolio/logo.png" alt="Logo" style="height: 30px;">
+  </div>
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in"><span style="font-family: bebas neue;color: rgb(255,255,255);font-size: 35px;"><br><strong><span style="color: rgba(235,229,217,var(--O42jJQ,1));">IN THE LAST 20 YEARS, THERE HASN’T BEEN A SINGLES PLAYER </span></strong><br><strong><span style="color: rgba(235,229,217,var(--O42jJQ,1));">IN THE TOP 100 FROM INDONESIA.</span></strong><br><br></span><span style="font-size: 19px;"><br><span style="font-weight: normal !important; color: rgba(235,229,217,var(--O42jJQ,1));">WE’RE ABOUT TO CHANGE THAT. </span><br><br></span></div>
+                <div class="intro-heading text-uppercase"></div>
+            </div>
+        </div>
+    </header>
+  <!-- Section services -->
+<section id="services" class="section-relative" style="background-image: url('assets/img/portfolio/padle.png'); background-size: cover; background-position: center; min-height: 100vh; display: flex; align-items: center;">
+  <img src="assets/img/portfolio/logo.png" alt="Logo" class="section-logo">
+  <div class="container-fluid text-center text-white">
+    <div class="row">
+      <!-- Judul utama di atas tengah -->
+      <div class="col-12 mb-5">
+        <h3 class="fw-bold">THE TOP SEEDS INITIATIVE DELIVERS ITS PROGRAMS<br>THROUGH THREE FOUNDATIONAL PILLARS:</h3>
+      </div>
+    </div>
+    <div class="row text-center">
+      <!-- Kolom Training -->
+      <div class="col-md-4 d-flex align-items-center justify-content-center" style="min-height: 60vh;">
+        <h2 class="fw-bold">TRAINING</h2>
+      </div>
+      <!-- Kolom Sponsor -->
+      <div class="col-md-4 d-flex align-items-center justify-content-center" style="min-height: 60vh;">
+        <h2 class="fw-bold">SPONSOR</h2>
+      </div>
+      <!-- Kolom Building -->
+      <div class="col-md-4 d-flex align-items-center justify-content-center" style="min-height: 60vh;">
+        <h2 class="fw-bold">BUILDING</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Section Portfolio (Training) -->
+<section id="portfolio" class="section-relative" style="background-image: url('assets/img/portfolio/lapangan.png'); background-size: cover; background-position: center; min-height: 100vh; display: flex; align-items: flex-end;">
+  <img src="assets/img/portfolio/logo.png" alt="Logo" class="section-logo">
+  <div class="container-fluid">
+    <div class="row w-100"; padding: 60px 40px;">
+      <!-- Kiri -->
+     <!-- Kiri -->
+<div class="col-md-6 text-white d-flex align-items-center" style="padding-left: 80px;">
+  <h2 class="fw-bold m-0">TRAINING<br>THE TOP 8</h2>
+</div>
+
+      <!-- Kanan -->
+      <div class="col-md-6 text-white">
+        <p>
+          Among the hundreds we meet, we select a group of Indonesia's most promising young players — our Top Seeds.
+        </p>
+        <p>
+          For these exceptional few, Top Seeds serves as a stepping stone: a place to train, be mentored, and prepare for the next level.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Google Font Montserrat -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+<section id="about" class="section-relative" style="background-color: #61653a; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; font-family: 'Montserrat', sans-serif; color: white; text-align: center; padding: 60px 20px; position: relative;">
+  <img src="assets/img/portfolio/logo.png" alt="Logo" class="section-logo">
+
+  <!-- Judul -->
+  <h2 style="font-weight: 700; margin-bottom: 20px;">OUTREACH PROGRAM</h2>
+
+  <!-- Deskripsi -->
+  <p style="max-width: 600px; margin: 0 auto 100px; font-size: 16px; line-height: 1.8; font-weight: 400;">
+    Our team at Top Seeds Initiative partners with local coaches to<br>
+    share training methods, creating a ripple effect of better instruction<br>
+    and deeper passion across regions.
+  </p>
+
+  <!-- Sponsor Section -->
+  <div style="width: 100%; display: flex; justify-content: space-between; align-items: flex-end; padding: 0 60px; position: absolute; bottom: 40px; left: 0;">
+
+    <!-- Left Sponsor -->
+    <div style="text-align: left;">
+      <p style="font-size: 12px; font-weight: 600; margin-bottom: 8px;">WHO WE SPONSOR:</p>
+      <img src="assets/img/portfolio/tnes.png" alt="Lucky Tennis" style="height: 40px;">
+    </div>
+
+    <!-- Right Sponsor -->
+    <div style="text-align: right;">
+      <p style="font-size: 12px; font-weight: 600; margin-bottom: 8px;">OUR SPONSOR:</p>
+      <img src="assets/img/portfolio/tekno.png" alt="Technogym" style="height: 40px;">
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- Load Montserrat dari Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+<section id="team" class="section-relative" 
+  style="background-image: url('assets/img/portfolio/map.png'); 
+         background-size: cover; 
+         background-position: center; 
+         min-height: 100vh; 
+         position: relative;">
+
+  <!-- Logo kiri atas -->
+  <img src="assets/img/portfolio/logo.png" 
+       alt="Logo" 
+       class="section-logo" 
+       style="position: absolute; top: 20px; left: 20px; width: 60px;">
+  <div class="text-white" 
+  
+     <!-- Container teks (kiri bawah nyatu) -->
+<div class="text-white" 
+     style="font-family: 'Montserrat', sans-serif; 
+            position: absolute; 
+            bottom: 60px; 
+            left: 290px; 
+            display: flex; 
+            align-items: flex-end; 
+            gap: 30px; 
+            max-width: 90%;">
+
+  <!-- Kiri: Judul -->
+  <h4 class="fw-bold" style="margin: 0; white-space: nowrap;">
+    COURT BY COURT
+  </h4>
+
+  <!-- Kanan: Paragraf -->
+  <p style="font-size: 16px; line-height: 1.6; margin: 0; max-width: 500px;">
+    We help rebuild public tennis courts across Indonesia,<br>
+    turning forgotten spaces into places of possibility.
+  </p>
+</div>
+
+
+
+</section>
+
+
+
+
+</script>
+
+    <!-- Google Font Montserrat -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+<section id="team" class="section-relative" style="background-color: #473f20; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; font-family: 'Montserrat', sans-serif; color: white; text-align: center; position: relative; padding: 40px 20px;">
+  
+
+  <!-- Logo kiri atas -->
+  <div style="position: absolute; top: 20px; left: 20px;">
+    <img src="assets/img/portfolio/logo.png" alt="Logo" style="height: 30px;">
+  </div>
+
+  <!-- Judul -->
+  <h2 style="font-weight: 700; margin-bottom: 10px;">OUR PHILOSOPHY</h2>
+
+  <!-- Subjudul -->
+  <p style="font-size: 12px; font-weight: 400; letter-spacing: 1px; margin-bottom: 30px;">
+    WE ARE THE BIRTHPLACE OF MINDFUL TENNIS.
+  </p>
+
+  <!-- Deskripsi -->
+  <p style="max-width: 600px; font-size: 15px; line-height: 1.8; font-weight: 400; margin: 0 auto;">
+    We’re not just training athletes — we’re shaping humans.<br>
+    Through mindfulness, discipline, and heart, our players<br>
+    learn to show up on the court and in life with clarity,<br>
+    confidence, and compassion.
+  </p>
+
+</section>
+
+<!-- Google Font Montserrat -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+<section id="team" class="section-relative" style="background-color: #473f20; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; font-family: 'Montserrat', sans-serif; color: white; text-align: center; position: relative; padding: 60px 20px;">
+  
+
+  <!-- Logo kiri atas -->
+  <div style="position: absolute; top: 20px; left: 20px;">
+    <img src="assets/img/portfolio/logo.png" alt="Logo" style="height: 30px;">
+  </div>
+
+  <!-- Judul -->
+  <h2 style="font-weight: 700; margin-bottom: 20px;">OUR GOALS</h2>
+
+  <!-- Deskripsi -->
+  <p style="max-width: 750px; margin: 0 auto 60px; font-size: 16px; line-height: 1.8; font-weight: 400;">
+    Our goal is to guide each of them into the Mouratoglou Academy — whether in France, Malaysia, 
+    or any of their other global academies. From there, they’ll be positioned to pursue a college tennis 
+    scholarship or launch onto the professional tour. Top Seeds provides the foundation — Mouratoglou builds the future.
+  </p>
+
+  <!-- Tiga ikon dengan teks -->
+  <div style="display: flex; justify-content: center; gap: 80px; flex-wrap: wrap;">
+
+    <!-- Ikon 1 -->
+    <div style="text-align: center; max-width: 200px;">
+      <img src="assets/img/portfolio/kuliah.png" alt="Going to College" style="height: 50px; margin-bottom: 20px;">
+      <p style="font-weight: 700; font-size: 14px; line-height: 1.4;">GOING TO<br>COLLEGE</p>
+    </div>
+
+<!-- Ikon 2 -->
+<div style="text-align: center; max-width: 220px;">
+  <img src="assets/img/portfolio/pesawat.png" 
+       alt="Train at the Mouratoglou" 
+       style="height: 50px; margin-bottom: 20px; margin-left: 25px;">
+  <p style="font-weight: 700; font-size: 14px; line-height: 1.4;">
+    TRAIN AT THE<br>MOURATOGLOU
+  </p>
+</div>
+
+   <!-- Ikon 3 -->
+<div style="text-align: center; max-width: 220px;">
+  <img src="assets/img/portfolio/raket.png" 
+       alt="Become a Pro Tennis Player" 
+       style="height: 50px; margin-bottom: 20px; margin-left: 35px;">
+  <p style="font-weight: 700; font-size: 14px; line-height: 1.4;">
+    BECOME A<br>PRO TENNIS PLAYER
+  </p>
+</div>
+
+
+  </div>
+</section>
+
+<!-- Google Font Montserrat -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+<section id="team" class="section-relative" style="background-image: url('assets/img/portfolio/balik.png'); background-size: cover; background-position: center; min-height: 100vh; position: relative; font-family: 'Montserrat', sans-serif; color: white;">
+
+  
+  <!-- Logo kiri atas -->
+  <div style="position: absolute; top: 20px; left: 20px;">
+    <img src="assets/img/portfolio/logo.png" alt="Logo" style="height: 30px;">
+  </div>
+  
+  <!-- Konten -->
+  <div style="position: absolute; bottom: 60px; left: 60px; max-width: 600px;">
+
+    <!-- Judul -->
+    <h2 style="font-weight: 700; margin-bottom: 20px; font-size: 22px; line-height: 1.4;">
+      SUPPORTED BY <br> PRANA SHALA BALI
+    </h2>
+
+    <!-- Deskripsi -->
+    <p style="font-size: 15px; line-height: 1.8; font-weight: 400; margin: 0;">
+      The Top Seeds Initiative, fully supported by Prana Shala Bali, is founded on the belief that tennis is more than a sport — it’s a pathway to growth, discipline, and opportunity. As a foundation and tennis & wellness retreat in the heart of Ubud, we are a sanctuary for sport, community, and holistic wellbeing. Through this program, we give back by honoring the spirit of tennis and investing in the next generation of Indonesian talent, both on and off the court.
+    </p>
+  </div>
+</section>
+
+<!-- Google Font Montserrat -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+<section id="team" class="section-relative" style="background-image: url('assets/img/portfolio/bullet.png'); background-size: cover; background-position: center; min-height: 100vh; position: relative; font-family: 'Montserrat', sans-serif; color: white;">
+ <!-- Logo kiri atas -->
+  <div style="position: absolute; top: 20px; left: 20px;">
+    <img src="assets/img/portfolio/logo.png" alt="Logo" style="height: 30px;">
+  </div>
+
+   <!-- Teks di sekitar lingkaran -->
+<div style="position: absolute; top: 29%; left: 22%; text-align: center; max-width: 120px;">
+  <p style="font-size: 14px; font-weight: 600; margin: 0;">ELIGIBLE<br>FOR 5–18 Y.O</p>
+</div>
+
+<div style="position: absolute; top: 57%; left: 29%; transform: translateY(-50%); text-align: center; max-width: 80px;">
+  <p style="font-size: 14px; font-weight: 600; margin: 0;">APPLY</p>
+</div>
+
+<div style="position: absolute; bottom: 18%; left: 50%; transform: translateX(-50%); text-align: center; max-width: 200px;">
+  <p style="font-size: 14px; font-weight: 600; margin: 0;">TOP SEEDS<br>CHOOSE 8 PLAYERS</p>
+</div>
+
+<div style="position: absolute; top: 56%; right: 28%; transform: translateY(-50%); text-align: center; max-width: 120px;">
+  <p style="font-size: 14px; font-weight: 600; margin: 0;">TRAINING</p>
+</div>
+
+<div style="position: absolute; top: 29%; right: 25%; text-align: center; max-width: 140px;">
+  <p style="font-size: 14px; font-weight: 600; margin: 0;">FUTURE<br>PATHWAYS</p>
+</div>
+
+</section>
+
+  <style>
+  /* Form transparan */
+  #applicationForm .form-control {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    color: #fff !important;
+    backdrop-filter: blur(6px); /* efek blur kaca */
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+
+  #applicationForm .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  #applicationForm .form-control:focus {
+    border-color: #ffcc00;
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.8);
+    background: rgba(255, 255, 255, 0.25) !important;
+  }
+
+  /* Small text hint */
+  #applicationForm small {
+    color: rgba(255, 255, 255, 0.8);
+  }
+</style>
+
+
+<section id="contact" class="section-relative" style="background-color:#6b6b2b; padding:80px 0; color:white; font-family: 'Montserrat', sans-serif;">
+  <img src="assets/img/portfolio/logo.png" alt="Logo" class="section-logo">
+  <div class="container">
+    <div class="row">
+      <!-- Judul di kiri -->
+      <div class="col-lg-3 mb-4">
+        <h2 class="fw-bold text-uppercase" style="line-height:1.3;">
+          Application <br> Form
+        </h2>
+      </div>
+
+      <!-- Teks instruksi & guideline -->
+      <div class="col-lg-9">
+        <p>Send us a video that includes a story about yourself off and on court.</p>
+        <div class="row">
+          <div class="col-md-6">
+            <h6>Here are some guidelines:</h6>
+            <ul>
+              <li>A little bit about yourself</li>
+              <li>How long have you been on the court?</li>
+              <li>Why are you passionate about tennis</li>
+              <li>What is your dream for the future?</li>
+              <li>Please include a 3 mins video of you being on the court playing tennis.</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <h6>For the parents:</h6>
+            <ul>
+              <li>A little about yourself</li>
+              <li>What's your dream for your child?</li>
+              <li>What are your hopes for Top Seeds Initiative to provide for your child?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div class="row mt-4">
+      <div class="col-lg-12">
+        <form id="applicationForm">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <input type="text" class="form-control" placeholder="Full Name">
+            </div>
+            <div class="col-md-6 mb-3">
+              <input type="text" class="form-control" placeholder="Age">
+            </div>
+            <div class="col-md-6 mb-3">
+              <input type="text" class="form-control" placeholder="Parents Name">
+            </div>
+            <div class="col-md-6 mb-3">
+              <input type="text" class="form-control" placeholder="City">
+            </div>
+            <div class="col-md-6 mb-3">
+              <input type="email" class="form-control" placeholder="Email">
+            </div>
+            <div class="col-md-6 mb-3">
+              <input type="text" class="form-control" placeholder="Number Mobile">
+            </div>
+            <div class="col-md-6 mb-3">
+              <textarea class="form-control" placeholder="Special achievement" rows="3"></textarea>
+            </div>
+            <div class="col-md-6 mb-3">
+              <input type="file" class="form-control">
+              <small>*Duration video minimum 15 minutes</small>
+            </div>
+            <div class="col-12 mt-3">
+              <button type="submit" class="btn btn-danger btn-lg px-4">Upload Application</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+   <footer style="background-color:#934E27; color:#fff; padding:15px 0; font-family:'Montserrat', sans-serif; font-size:13px; line-height:1.5;">
+  <div class="container">
+    <div class="row">
+      
+      <!-- Kiri -->
+      <div class="col-md-5 text-start">
+        <h6 style="font-weight:700; margin-bottom:5px; font-size:13px;">TOP SEEDS INITIATIVE</h6>
+        <p style="margin:0; font-size:12px;">The Birthplace of Mindful Tennis</p>
+      </div>
+      
+      <!-- Kanan (agak ke tengah) -->
+      <div class="col-md-5 text-start ms-auto" style="max-width:300px;">
+        <h6 style="font-weight:700; margin-bottom:5px; font-size:13px;">CONTACT</h6>
+        <p style="margin:0; font-size:12px;">
+          Jl. Lodsema Jl.Raya Mawang<br>
+          Lodtunduh Ubud, Gianyar,<br>
+          Bali - Indonesia 80582
+        </p>
+        <p style="margin:5px 0 0; font-size:12px;">Instagram: @topseedsinitiative</p>
+        <p style="margin:0; font-size:12px;">Email: grow@topseeds.id</p>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal1">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body">
+                                <h2 class="text-uppercase">Project Name</h2>
+                                <p class="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img class="img-fluid d-block mx-auto" src="assets/img/portfolio/1-full.jpg">
+                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                <ul class="list-unstyled">
+                                    <li>Date: January 2017</li>
+                                    <li>Client: Threads</li>
+                                    <li>Category: Illustration</li>
+                                </ul><button class="btn btn-primary" type="button" data-bs-dismiss="modal"><i class="fa fa-times"></i><span>&nbsp;Close Project</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal2">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body">
+                                <h2 class="text-uppercase">Project Name</h2>
+                                <p class="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img class="img-fluid d-block mx-auto" src="assets/img/portfolio/2-full.jpg">
+                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                <ul class="list-unstyled">
+                                    <li>Date: January 2017</li>
+                                    <li>Client: Threads</li>
+                                    <li>Category: Illustration</li>
+                                </ul><button class="btn btn-primary" type="button" data-bs-dismiss="modal"><i class="fa fa-times"></i><span>&nbsp;Close Project</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal3">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body">
+                                <h2 class="text-uppercase">Project Name</h2>
+                                <p class="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img class="img-fluid d-block mx-auto" src="assets/img/portfolio/3-full.jpg">
+                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                <ul class="list-unstyled">
+                                    <li>Date: January 2017</li>
+                                    <li>Client: Threads</li>
+                                    <li>Category: Illustration</li>
+                                </ul><button class="btn btn-primary" type="button" data-bs-dismiss="modal"><i class="fa fa-times"></i><span>&nbsp;Close Project</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal4">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body">
+                                <h2 class="text-uppercase">Project Name</h2>
+                                <p class="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img class="img-fluid d-block mx-auto" src="assets/img/portfolio/4-full.jpg">
+                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                <ul class="list-unstyled">
+                                    <li>Date: January 2017</li>
+                                    <li>Client: Threads</li>
+                                    <li>Category: Illustration</li>
+                                </ul><button class="btn btn-primary" type="button" data-bs-dismiss="modal"><i class="fa fa-times"></i><span>&nbsp;Close Project</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal5">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body">
+                                <h2 class="text-uppercase">Project Name</h2>
+                                <p class="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img class="img-fluid d-block mx-auto" src="assets/img/portfolio/5-full.jpg">
+                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                <ul class="list-unstyled">
+                                    <li>Date: January 2017</li>
+                                    <li>Client: Threads</li>
+                                    <li>Category: Illustration</li>
+                                </ul><button class="btn btn-primary" type="button" data-bs-dismiss="modal"><i class="fa fa-times"></i><span>&nbsp;Close Project</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/agency.js"></script>
+    <script>
+        // Smooth scroll for browsers that don't support scroll-behavior
+        document.querySelectorAll('.navbar-nav .nav-link').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                var targetId = this.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    var target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        window.scrollTo({
+                            top: target.offsetTop - 54, // adjust for navbar height
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            var nav = document.getElementById('mainNav');
+            if (window.scrollY > 40) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Active nav-link highlight on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 60;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').replace('#','') === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>
