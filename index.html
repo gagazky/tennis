@@ -54,10 +54,27 @@
             transition: background 0.4s cubic-bezier(.4, 0, .2, 1), box-shadow 0.4s cubic-bezier(.4, 0, .2, 1);
         }
 
-        #mainNav.scrolled {
-            background: rgba(34, 34, 34, 0.95) !important;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
-        }
+        /* Navbar transparan, tapi lebih pekat (tidak terlalu transparan) */
+#mainNav {
+  background: rgba(34, 34, 34, 0.40) !important; /* lebih pekat */
+  box-shadow: none !important;
+  transition: background 0.4s cubic-bezier(.4, 0, .2, 1), box-shadow 0.4s cubic-bezier(.4, 0, .2, 1);
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+/* Navbar lebih kecil dan lebih transparan saat di home (belum scroll) */
+body:not(.scrolled) #mainNav {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  background: rgba(34, 34, 34, 0.18) !important; /* lebih transparan di home */
+}
+/* Navbar saat scroll (bukan home) */
+#mainNav.scrolled {
+  background: rgba(34, 34, 34, 0.88) !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 
         .navbar-nav .nav-link {
             position: relative;
@@ -318,13 +335,77 @@ section img {
     object-fit: contain;
 }
 
-    </style>
+  /* Grid form agar label dan box rata vertikal */
+  .form-row-custom {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 18px;
+  }
+  .form-row-custom .form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .form-row-custom label {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+  }
+  .form-row-custom input,
+  .form-row-custom textarea {
+    width: 100%;
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.4);
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 0;
+  }
+  .form-row-custom textarea {
+    min-height: 90px;
+    resize: vertical;
+  }
+  .form-group-video {
+    margin-top: 18px;
+  }
+  .form-group-video label {
+    margin-bottom: 6px;
+  }
+  .form-group-video input[type="file"] {
+    width: 100%;
+  }
+  .form-group-video small {
+    color: rgba(255,255,255,0.8);
+    margin-top: 4px;
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .form-group-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+  }
+  @media (max-width: 767px) {
+    .form-row-custom {
+      flex-direction: column;
+      gap: 14px;
+    }
+  }
+</style>
 </head>
 
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="54">
     <nav class="navbar navbar-expand-lg fixed-top bg-dark navbar-dark" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="#page-top" style="color: rgb(255,255,255); font-family: 'Bebas Neue', cursive;">Top Seeds<br>Initiative</a>
+             <img src="assets/img/portfolio/rrrr.png" 
+     alt="Logo" 
+     class="img-fluid d-inline-block align-text-top" 
+     style="max-height:50px; width:auto;">
             <button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto text-uppercase">
@@ -338,9 +419,12 @@ section img {
         </div>
     </nav>
     <header class="masthead" style="background-image: url('assets/img/team/Copy%20of%20Top%20Seeds%20Web.jpg');">
-       <!-- Logo kiri atas -->
-  <div style="position: absolute; top: 20px; left: 20px;">
-    <img src="assets/img/portfolio/logo.png" alt="Logo" style="height: 30px;">
+
+  <!-- Tombol kanan atas -->
+  <div style="position: absolute; top: 70px; right: 20px;">
+    <a href="#apply" style="color:white; font-size:12px; font-weight:700; text-transform:uppercase; text-decoration:none;">
+      APPLY NOW
+    </a>
   </div>
         <div class="container">
             <div class="intro-text">
@@ -439,8 +523,7 @@ section img {
 <!-- Load Montserrat dari Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
-<section id="team" class="section-relative" 
-  style="background-image: url('assets/img/portfolio/map.png'); 
+<section id="team" class="section-relative" style="background-image: url('assets/img/portfolio/map.png'); 
          background-size: cover; 
          background-position: center; 
          min-height: 100vh; 
@@ -597,6 +680,45 @@ section img {
 <!-- Google Font Montserrat -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
+<section id="hero" 
+  style="background-image: url('assets/img/portfolio/ijo.png'); 
+         background-size: cover; 
+         background-position: center; 
+         min-height: 100vh; 
+         display: flex; 
+         justify-content: center; 
+         align-items: center; 
+         text-align: center; 
+         font-family: 'Montserrat', sans-serif; 
+         color: white; 
+         position: relative;">
+
+  <!-- Logo kiri atas -->
+  <div style="position: absolute; top: 20px; left: 20px;">
+    <img src="assets/img/portfolio/logo.png" alt="Logo" style="height: 30px;">
+  </div>
+
+  <!-- Teks Tengah -->
+  <div>
+    <h1 style="font-size: 28px; font-weight: 700; text-transform: uppercase; line-height: 1.4; margin: 0;">
+      EVERY CHAMPION STARTS WITH A SEED. <br>
+      WE’RE PLANTING THEM HERE.
+    </h1>
+  </div>
+
+  <!-- Tombol kanan atas -->
+  <div style="position: absolute; top: 20px; right: 20px;">
+    <a href="#apply" style="color:white; font-size:12px; font-weight:700; text-transform:uppercase; text-decoration:none;">
+      APPLY NOW
+    </a>
+  </div>
+
+</section>
+
+
+<!-- Google Font Montserrat -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
 <section id="team" class="section-relative" style="background-image: url('assets/img/portfolio/bullet.png'); background-size: cover; background-position: center; min-height: 100vh; position: relative; font-family: 'Montserrat', sans-serif; color: white;">
  <!-- Logo kiri atas -->
   <div style="position: absolute; top: 20px; left: 20px;">
@@ -653,27 +775,174 @@ section img {
   #applicationForm small {
     color: rgba(255, 255, 255, 0.8);
   }
+.form-label {
+  font-weight: 500;
+  margin-right: 15px; /* Memberikan jarak antara label dan input */
+}
+
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+
+.form-control {
+  flex: 1; /* Agar input mengambil sisa ruang yang ada */
+  height: 40px; /* Sesuaikan tinggi kotak input */
+  padding: 10px;
+}
+
+textarea.form-control {
+  resize: vertical;
+  height: 120px; /* Sesuaikan tinggi untuk textarea */
+}
+
+input[type="file"] {
+  padding: 10px;
+  height: auto; /* Pastikan input file memiliki tinggi yang sama dengan input lainnya */
+}
+
+.mb-3 {
+  margin-bottom: 15px;
+}
+
+input[type="file"] {
+  padding: 10px;
+}
+
+textarea.form-control {
+  height: 120px;
+  resize: vertical;
+}
+
+.btn {
+  padding: 10px 30px;
+}
+
+@media (max-width: 768px) {
+  .col-md-6 {
+    margin-bottom: 10px; /* Memastikan form tidak terlalu rapat di layar kecil */
+  }
+}
+
+  /* Grid form agar label dan box rata vertikal */
+  .form-row-custom {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 18px;
+  }
+  .form-row-custom .form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .form-row-custom label {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+  }
+  .form-row-custom input,
+  .form-row-custom textarea {
+    width: 100%;
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.4);
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 0;
+  }
+  .form-row-custom textarea {
+    min-height: 90px;
+    resize: vertical;
+  }
+  .form-group-video {
+    margin-top: 18px;
+  }
+  .form-group-video label {
+    margin-bottom: 6px;
+  }
+  .form-group-video input[type="file"] {
+    width: 100%;
+  }
+  .form-group-video small {
+    color: rgba(255,255,255,0.8);
+    margin-top: 4px;
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .form-group-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+  }
+  @media (max-width: 767px) {
+    .form-row-custom {
+      flex-direction: column;
+      gap: 14px;
+    }
+  }
+  /* Menyesuaikan ukuran tombol */
+.btn-lg {
+  font-size: 16px; /* Ukuran font yang lebih kecil */
+  padding: 10px 25px; /* Ukuran padding lebih kecil */
+  width: auto; /* Pastikan tombol hanya mengambil ruang yang diperlukan */
+}
+
+/* Menghilangkan transparansi dan menyesuaikan warna */
+.btn {
+  background-color: #934E27 !important; /* Pastikan warnanya solid */
+  border: none; /* Menghapus border default */
+  opacity: 1; /* Menghindari transparansi */
+}
+
+/* Menjaga tombol di sebelah kiri */
+.d-flex.justify-content-start {
+  justify-content: flex-start;
+}
+
 </style>
 
 
-<section id="contact" class="section-relative" style="background-color:#6b6b2b; padding:80px 0; color:white; font-family: 'Montserrat', sans-serif;">
-  <img src="assets/img/portfolio/logo.png" alt="Logo" class="section-logo">
+<!-- Google Font Montserrat -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+<section id="contact" 
+  style="background-image: url('assets/img/portfolio/hijau.png'); 
+         background-size: cover; 
+         background-position: center; 
+         padding: 80px 0; 
+         color: white; 
+         font-family: 'Montserrat', sans-serif; 
+         position: relative;">
+
+  <!-- Logo kiri atas -->
+  <div style="position: absolute; top: 20px; left: 20px;">
+    <img src="assets/img/portfolio/logo.png" alt="Logo" style="height: 30px;">
+  </div>
+
   <div class="container">
     <div class="row">
       <!-- Judul di kiri -->
       <div class="col-lg-3 mb-4">
-        <h2 class="fw-bold text-uppercase" style="line-height:1.3;">
+        <h2 style="font-weight:700; text-transform:uppercase; line-height:1.3;">
           Application <br> Form
         </h2>
       </div>
 
-      <!-- Teks instruksi & guideline -->
+      <!-- Instruksi & Guidelines di kanan -->
       <div class="col-lg-9">
-        <p>Send us a video that includes a story about yourself off and on court.</p>
+        <p style="margin-bottom:15px; font-weight:400;">
+          Send us a video that includes a story about yourself off and on court.
+        </p>
+
         <div class="row">
           <div class="col-md-6">
-            <h6>Here are some guidelines:</h6>
-            <ul>
+            <h6 style="font-weight:600; margin-bottom:8px;">Here are some guidelines:</h6>
+            <ul style="padding-left:20px; margin:0;">
               <li>A little bit about yourself</li>
               <li>How long have you been on the court?</li>
               <li>Why are you passionate about tennis</li>
@@ -681,9 +950,10 @@ section img {
               <li>Please include a 3 mins video of you being on the court playing tennis.</li>
             </ul>
           </div>
+
           <div class="col-md-6">
-            <h6>For the parents:</h6>
-            <ul>
+            <h6 style="font-weight:600; margin-bottom:8px;">For the parents:</h6>
+            <ul style="padding-left:20px; margin:0;">
               <li>A little about yourself</li>
               <li>What's your dream for your child?</li>
               <li>What are your hopes for Top Seeds Initiative to provide for your child?</li>
@@ -693,45 +963,60 @@ section img {
       </div>
     </div>
 
-    <!-- Form -->
-    <div class="row mt-4">
-      <div class="col-lg-12">
-        <form id="applicationForm">
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <input type="text" class="form-control" placeholder="Full Name">
-            </div>
-            <div class="col-md-6 mb-3">
-              <input type="text" class="form-control" placeholder="Age">
-            </div>
-            <div class="col-md-6 mb-3">
-              <input type="text" class="form-control" placeholder="Parents Name">
-            </div>
-            <div class="col-md-6 mb-3">
-              <input type="text" class="form-control" placeholder="City">
-            </div>
-            <div class="col-md-6 mb-3">
-              <input type="email" class="form-control" placeholder="Email">
-            </div>
-            <div class="col-md-6 mb-3">
-              <input type="text" class="form-control" placeholder="Number Mobile">
-            </div>
-            <div class="col-md-6 mb-3">
-              <textarea class="form-control" placeholder="Special achievement" rows="3"></textarea>
-            </div>
-            <div class="col-md-6 mb-3">
-              <input type="file" class="form-control">
-              <small>*Duration video minimum 15 minutes</small>
-            </div>
-            <div class="col-12 mt-3">
-              <button type="submit" class="btn btn-danger btn-lg px-4">Upload Application</button>
-            </div>
-          </div>
-        </form>
+    <form id="applicationForm" style="margin-top:40px;">
+  <div class="row justify-content-center gx-4 gy-3">
+    <!-- Kolom kiri: Full Name, Parents Name, Email -->
+    <div class="col-md-4">
+      <div class="mb-3 d-flex align-items-center">
+        <label for="fullName" class="form-label mb-0 me-2" style="width:110px;">Full Name</label>
+        <input type="text" id="fullName" name="fullName" class="form-control" placeholder="">
+      </div>
+      <div class="mb-3 d-flex align-items-center">
+        <label for="parentsName" class="form-label mb-0 me-2" style="width:110px;">Parents Name</label>
+        <input type="text" id="parentsName" name="parentsName" class="form-control" placeholder="">
+      </div>
+      <div class="mb-3 d-flex align-items-center">
+        <label for="email" class="form-label mb-0 me-2" style="width:110px;">Email</label>
+        <input type="email" id="email" name="email" class="form-control" placeholder="">
       </div>
     </div>
-  </div>
+    <!-- Kolom kanan: Age, City, Number Mobile -->
+    <div class="col-md-4">
+      <div class="mb-3 d-flex align-items-center">
+        <label for="age" class="form-label mb-0 me-2" style="width:110px;">Age</label>
+        <input type="text" id="age" name="age" class="form-control" placeholder="">
+      </div>
+      <div class="mb-3 d-flex align-items-center">
+        <label for="city" class="form-label mb-0 me-2" style="width:110px;">City</label>
+        <input type="text" id="city" name="city" class="form-control" placeholder="">
+      </div>
+      <div class="mb-3 d-flex align-items-center">
+        <label for="mobile" class="form-label mb-0 me-2" style="width:110px;">Number Mobile</label>
+        <input type="text" id="mobile" name="mobile" class="form-control" placeholder="">
+      </div>
+    </div>
+    <!-- Baris bawah: Achievement & Video, label di atas -->
+    <div class="col-md-6">
+      <div class="mb-3">
+        <label for="achievement" class="form-label" style="font-weight:600;">Special Achievement</label>
+        <textarea id="achievement" name="achievement" class="form-control" rows="3"></textarea>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="mb-3">
+        <label for="video" class="form-label" style="font-weight:600;">Submit Video*</label>
+        <input type="file" id="video" name="video" class="form-control">
+        <small style="color:rgba(255,255,255,0.8);">*Duration video minimum 15 minutes</small>
+      </div>
+    </div>
+    <!-- Tombol submit -->
+<div class="col-12 d-flex justify-content-start mt-3">
+  <button type="submit" class="btn btn-danger btn-lg px-4" style="background-color:#934E27; font-family:'Montserrat',sans-serif;">Upload Application</button>
+</div>
+
+</form>
 </section>
+
    <footer style="background-color:#934E27; color:#fff; padding:15px 0; font-family:'Montserrat', sans-serif; font-size:13px; line-height:1.5;">
   <div class="container">
     <div class="row">
@@ -757,116 +1042,6 @@ section img {
     </div>
   </div>
 </footer>
-    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal1">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div class="modal-body">
-                                <h2 class="text-uppercase">Project Name</h2>
-                                <p class="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img class="img-fluid d-block mx-auto" src="assets/img/portfolio/1-full.jpg">
-                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                <ul class="list-unstyled">
-                                    <li>Date: January 2017</li>
-                                    <li>Client: Threads</li>
-                                    <li>Category: Illustration</li>
-                                </ul><button class="btn btn-primary" type="button" data-bs-dismiss="modal"><i class="fa fa-times"></i><span>&nbsp;Close Project</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal2">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div class="modal-body">
-                                <h2 class="text-uppercase">Project Name</h2>
-                                <p class="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img class="img-fluid d-block mx-auto" src="assets/img/portfolio/2-full.jpg">
-                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                <ul class="list-unstyled">
-                                    <li>Date: January 2017</li>
-                                    <li>Client: Threads</li>
-                                    <li>Category: Illustration</li>
-                                </ul><button class="btn btn-primary" type="button" data-bs-dismiss="modal"><i class="fa fa-times"></i><span>&nbsp;Close Project</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal3">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div class="modal-body">
-                                <h2 class="text-uppercase">Project Name</h2>
-                                <p class="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img class="img-fluid d-block mx-auto" src="assets/img/portfolio/3-full.jpg">
-                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                <ul class="list-unstyled">
-                                    <li>Date: January 2017</li>
-                                    <li>Client: Threads</li>
-                                    <li>Category: Illustration</li>
-                                </ul><button class="btn btn-primary" type="button" data-bs-dismiss="modal"><i class="fa fa-times"></i><span>&nbsp;Close Project</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal4">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div class="modal-body">
-                                <h2 class="text-uppercase">Project Name</h2>
-                                <p class="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img class="img-fluid d-block mx-auto" src="assets/img/portfolio/4-full.jpg">
-                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                <ul class="list-unstyled">
-                                    <li>Date: January 2017</li>
-                                    <li>Client: Threads</li>
-                                    <li>Category: Illustration</li>
-                                </ul><button class="btn btn-primary" type="button" data-bs-dismiss="modal"><i class="fa fa-times"></i><span>&nbsp;Close Project</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal5">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div class="modal-body">
-                                <h2 class="text-uppercase">Project Name</h2>
-                                <p class="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img class="img-fluid d-block mx-auto" src="assets/img/portfolio/5-full.jpg">
-                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                <ul class="list-unstyled">
-                                    <li>Date: January 2017</li>
-                                    <li>Client: Threads</li>
-                                    <li>Category: Illustration</li>
-                                </ul><button class="btn btn-primary" type="button" data-bs-dismiss="modal"><i class="fa fa-times"></i><span>&nbsp;Close Project</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/agency.js"></script>
     <script>
